@@ -75,23 +75,67 @@ Compare the original modulating signal with the demodulated signal. PROCEDURE
 •	Verify the generated waveform using Tabulation and Model Waveform
 
 Program
+```
+ // AM Generation in Scilab
+ clc;
+clear;
+close;
 
+// Parameters
+Am = 1;        // Message amplitude
+Ac = 2;        // Carrier amplitude
+fm = 5;        // Message frequency in Hz
+fc = 50;       // Carrier frequency in Hz
+mu = 0.5;      // Modulation index
+fs = 1000;     // Sampling frequency
+t = 0:1/fs:1;  // Time vector
 
+// Message signal
+m = Am * cos(2 * %pi * fm * t);
+
+// Carrier signal
+c = Ac * cos(2 * %pi * fc * t);
+
+// AM signal (standard)
+s = (Ac + mu * m) .* cos(2 * %pi * fc * t);
+
+// Plot signals
+subplot(3,1,1);
+plot(t, m);
+title('Message Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+grid on;
+
+subplot(3,1,2);
+plot(t, c);
+title('Carrier Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+grid on;
+
+subplot(3,1,3);
+plot(t, s);
+title('AM Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+grid on;
+```
 
 Output Waveform
+<img width="1908" height="883" alt="Screenshot 2025-09-24 192408" src="https://github.com/user-attachments/assets/18c7c3f4-0e5b-493b-8d2c-407b310eecc5" />
 
 
 
 
 
 TABULATION:
+![WhatsApp Image 2025-11-03 at 10 59 07_c3c8f365](https://github.com/user-attachments/assets/65548339-d92f-407b-a510-01331e7ed6cd)
 
 
 
-Calculation
-1.	ma (Theory) = am/ac =
-2.	ma(Practical) = (Emax-Emin)/(Emax+Emin) =
-
+Calculation:
+![WhatsApp Image 2025-11-03 at 10 59 08_5d8d0721](https://github.com/user-attachments/assets/3631eddf-b50d-4750-b00f-8905cdb0135c)
 
 MODEL GRAPH
  <img width="919" height="1290" alt="image" src="https://github.com/user-attachments/assets/55326c5b-7dd5-4873-aaf6-d219bb7c4420" />
